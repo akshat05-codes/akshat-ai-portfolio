@@ -1,6 +1,5 @@
-```jsx
-import React from 'react';
-import { createRoot } from 'react-dom/client';
+import React from "react";
+import { createRoot } from "react-dom/client";
 import {
   ArrowUpRight,
   Mail,
@@ -10,67 +9,68 @@ import {
   Sparkles,
   Menu,
   X
-} from 'lucide-react';
-import './styles.css';
+} from "lucide-react";
+import "./styles.css";
 
 const projects = [
   {
-    title: 'Hate Speech Detection System',
-    tag: 'NLP / Machine Learning',
-    text: 'Classifies social-media text using preprocessing, TF-IDF vectorization and ML classification, with precision, recall and accuracy evaluation.',
-    visual: 'tfidf'
+    title: "Hate Speech Detection System",
+    tag: "NLP / Machine Learning",
+    text: "Classifies social-media text using preprocessing, TF-IDF vectorization and machine-learning classification.",
+    visual: "tfidf"
   },
   {
-    title: 'AI Virtual Assistant',
-    tag: 'AI / Python / APIs',
-    text: 'Voice-driven assistant for desktop tasks, intelligent interaction, API integration and automation workflows.',
-    visual: 'assistant'
+    title: "AI Virtual Assistant",
+    tag: "AI / Python / APIs",
+    text: "Voice-driven assistant for desktop tasks, intelligent interaction, API integration and automation workflows.",
+    visual: "assistant"
   },
   {
-    title: 'Language Translator Application',
-    tag: 'Python / Tkinter / API',
-    text: 'Multilingual desktop translator with speech-to-text, text-to-speech and real-time translation through an API.',
-    visual: 'translate'
+    title: "Language Translator Application",
+    tag: "Python / Tkinter / API",
+    text: "Multilingual desktop translator with speech-to-text, text-to-speech and API-powered translation.",
+    visual: "translate"
   }
 ];
 
 function App() {
   const [open, setOpen] = React.useState(false);
 
-  const nav = (id) => {
-    document.getElementById(id)?.scrollIntoView({
-      behavior: 'smooth'
-    });
+  function nav(id) {
+    const element = document.getElementById(id);
+
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
     setOpen(false);
-  };
+  }
 
   return (
     <div className="site">
-      <div className="noise" />
-      <div className="grid" />
+      <div className="noise"></div>
+      <div className="grid"></div>
 
+      {/* NAVIGATION */}
       <header className="nav">
         <div className="nav-inner">
 
           <button
             className="brand"
-            onClick={() => nav('home')}
-            aria-label="Go to home"
+            onClick={() => nav("home")}
+            aria-label="Home"
           >
             AS<span>.</span>
           </button>
 
-          <nav className={open ? 'nav-links open' : 'nav-links'}>
-            {['about', 'skills', 'projects', 'education', 'contact'].map(
-              (x) => (
-                <button
-                  key={x}
-                  onClick={() => nav(x)}
-                >
-                  {x}
-                </button>
-              )
-            )}
+          <nav className={open ? "nav-links open" : "nav-links"}>
+            <button onClick={() => nav("about")}>about</button>
+            <button onClick={() => nav("skills")}>skills</button>
+            <button onClick={() => nav("projects")}>projects</button>
+            <button onClick={() => nav("education")}>education</button>
+            <button onClick={() => nav("contact")}>contact</button>
           </nav>
 
           <div className="nav-actions">
@@ -78,8 +78,8 @@ function App() {
               href="https://github.com/akshat05-codes"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub"
               className="social-text"
+              aria-label="GitHub"
             >
               GH
             </a>
@@ -87,9 +87,9 @@ function App() {
             <button
               className="menu"
               onClick={() => setOpen(!open)}
-              aria-label="Toggle menu"
+              aria-label="Menu"
             >
-              {open ? <X /> : <Menu />}
+              {open ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
 
@@ -104,7 +104,7 @@ function App() {
           <div className="hero-copy">
 
             <div className="eyebrow">
-              <span className="pulse" />
+              <span className="pulse"></span>
               AVAILABLE FOR AI / DATA ROLES
             </div>
 
@@ -115,16 +115,16 @@ function App() {
             </h1>
 
             <p className="lead">
-              I’m <b>Akshat Sharma</b>, a Computer Science graduate focused
-              on Python, Machine Learning, AI and Data Science — turning
-              ideas into practical software.
+              I&apos;m <b>Akshat Sharma</b>, a Computer Science graduate
+              focused on Python, Machine Learning, AI and Data Science —
+              turning ideas into practical software.
             </p>
 
             <div className="cta">
 
               <button
                 className="primary"
-                onClick={() => nav('projects')}
+                onClick={() => nav("projects")}
               >
                 Explore my work
                 <ArrowUpRight size={18} />
@@ -149,7 +149,7 @@ function App() {
 
               <div>
                 <strong>AI</strong>
-                <span>ML & NLP focus</span>
+                <span>ML &amp; NLP focus</span>
               </div>
 
               <div>
@@ -161,78 +161,39 @@ function App() {
 
           </div>
 
-          {/* HERO ART */}
+          {/* AI VISUAL */}
           <div
             className="hero-art"
             aria-label="AI network visualization"
           >
 
-            <div className="orbital o1" />
-            <div className="orbital o2" />
-            <div className="orbital o3" />
+            <div className="orbital o1"></div>
+            <div className="orbital o2"></div>
+            <div className="orbital o3"></div>
 
             <div className="node center">
               <BrainCircuit size={48} />
               <small>AI CORE</small>
             </div>
 
-            {['PY', 'ML', 'NLP', 'SQL', 'API', 'DS'].map(
-              (x, i) => (
-                <div
-                  className={`node n${i}`}
-                  key={x}
-                >
-                  {x}
-                </div>
-              )
-            )}
+            <div className="node n0">PY</div>
+            <div className="node n1">ML</div>
+            <div className="node n2">NLP</div>
+            <div className="node n3">SQL</div>
+            <div className="node n4">API</div>
+            <div className="node n5">DS</div>
 
             <svg
               className="connections"
               viewBox="0 0 500 500"
               aria-hidden="true"
             >
-              <line
-                x1="250"
-                y1="250"
-                x2="115"
-                y2="125"
-              />
-
-              <line
-                x1="250"
-                y1="250"
-                x2="390"
-                y2="120"
-              />
-
-              <line
-                x1="250"
-                y1="250"
-                x2="410"
-                y2="275"
-              />
-
-              <line
-                x1="250"
-                y1="250"
-                x2="360"
-                y2="410"
-              />
-
-              <line
-                x1="250"
-                y1="250"
-                x2="125"
-                y2="405"
-              />
-
-              <line
-                x1="250"
-                y1="250"
-                x2="75"
-                y2="285"
-              />
+              <line x1="250" y1="250" x2="115" y2="125" />
+              <line x1="250" y1="250" x2="390" y2="120" />
+              <line x1="250" y1="250" x2="410" y2="275" />
+              <line x1="250" y1="250" x2="360" y2="410" />
+              <line x1="250" y1="250" x2="125" y2="405" />
+              <line x1="250" y1="250" x2="75" y2="285" />
             </svg>
 
             <div className="floating-card fc1">
@@ -247,14 +208,10 @@ function App() {
             </div>
 
           </div>
-
         </section>
 
         {/* ABOUT */}
-        <section
-          id="about"
-          className="section about"
-        >
+        <section id="about" className="section about">
 
           <div className="section-label">
             01 / ABOUT
@@ -271,7 +228,6 @@ function App() {
             </div>
 
             <div>
-
               <p>
                 I enjoy building projects where software, data and AI meet.
                 My focus is on creating useful systems rather than only
@@ -280,22 +236,17 @@ function App() {
               </p>
 
               <p>
-                I’m currently looking for opportunities where I can grow
+                I&apos;m currently looking for opportunities where I can grow
                 as an AI / Python / Data Science professional and contribute
                 to real-world products.
               </p>
-
             </div>
 
           </div>
-
         </section>
 
         {/* SKILLS */}
-        <section
-          id="skills"
-          className="section"
-        >
+        <section id="skills" className="section">
 
           <div className="section-label">
             02 / SKILLS
@@ -305,7 +256,6 @@ function App() {
 
             <div className="skill-card">
               <Code2 />
-
               <h3>Programming</h3>
 
               <div className="chips">
@@ -318,8 +268,7 @@ function App() {
 
             <div className="skill-card">
               <BrainCircuit />
-
-              <h3>AI & ML</h3>
+              <h3>AI &amp; ML</h3>
 
               <div className="chips">
                 <span>Machine Learning</span>
@@ -331,7 +280,6 @@ function App() {
 
             <div className="skill-card">
               <Database />
-
               <h3>Development</h3>
 
               <div className="chips">
@@ -344,7 +292,6 @@ function App() {
 
             <div className="skill-card">
               <Sparkles />
-
               <h3>Core Knowledge</h3>
 
               <div className="chips">
@@ -356,27 +303,21 @@ function App() {
             </div>
 
           </div>
-
         </section>
 
         {/* PROJECTS */}
-        <section
-          id="projects"
-          className="section projects"
-        >
+        <section id="projects" className="section projects">
 
           <div className="section-head">
 
             <div>
-
               <div className="section-label">
                 03 / SELECTED WORK
               </div>
 
               <h2>
-                Things I’ve <span>built.</span>
+                Things I&apos;ve <span>built.</span>
               </h2>
-
             </div>
 
             <a
@@ -393,22 +334,204 @@ function App() {
 
           <div className="project-grid">
 
-            {projects.map((p, i) => (
-
+            {projects.map((project, index) => (
               <article
                 className="project"
-                key={p.title}
+                key={project.title}
               >
 
                 <div
-                  className={`project-visual ${p.visual}`}
+                  className={"project-visual " + project.visual}
                 >
 
-                  {p.visual === 'tfidf' && (
+                  {/* TF-IDF */}
+                  {project.visual === "tfidf" && (
                     <>
                       <div className="bars">
-                        {[42, 75, 56, 91, 63, 82].map(
-                          (h, j) => (
-                            <i
-                              style={{ heig
-```
+
+                        <i style={{ height: "42%" }}></i>
+                        <i style={{ height: "75%" }}></i>
+                        <i style={{ height: "56%" }}></i>
+                        <i style={{ height: "91%" }}></i>
+                        <i style={{ height: "63%" }}></i>
+                        <i style={{ height: "82%" }}></i>
+
+                      </div>
+
+                      <div className="scan">
+                        TEXT → VECTORS → MODEL
+                      </div>
+                    </>
+                  )}
+
+                  {/* AI ASSISTANT */}
+                  {project.visual === "assistant" && (
+                    <div className="terminal">
+                      <span>assistant.py</span>
+                      <b>› listening...</b>
+                      <em>voice command received</em>
+                      <strong>
+                        automation complete ✓
+                      </strong>
+                    </div>
+                  )}
+
+                  {/* TRANSLATOR */}
+                  {project.visual === "translate" && (
+                    <>
+                      <div className="translate-box">
+                        <b>Hello!</b>
+                        <span>नमस्ते!</span>
+                        <small>EN → HI</small>
+                      </div>
+
+                      <div className="wave">
+                        ~~~~~~~
+                      </div>
+                    </>
+                  )}
+
+                </div>
+
+                <div className="project-meta">
+
+                  <span>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  <span>
+                    {project.tag}
+                  </span>
+
+                </div>
+
+                <h3>
+                  {project.title}
+                </h3>
+
+                <p>
+                  {project.text}
+                </p>
+
+                <div className="project-footer">
+                  <span>Python</span>
+                  <ArrowUpRight size={18} />
+                </div>
+
+              </article>
+            ))}
+
+          </div>
+        </section>
+
+        {/* EDUCATION */}
+        <section id="education" className="section education">
+
+          <div className="section-label">
+            04 / EDUCATION
+          </div>
+
+          <div className="edu-card">
+
+            <div className="edu-year">
+              2022 — 2026
+            </div>
+
+            <div>
+              <h3>
+                B.Tech — Computer Science &amp; Engineering
+              </h3>
+
+              <p>
+                Sri Vaishnav Vidyapeeth Vishwavidyalaya, Indore
+              </p>
+            </div>
+
+            <strong>
+              CGPA 6.7
+            </strong>
+
+          </div>
+        </section>
+
+        {/* CONTACT */}
+        <section id="contact" className="section contact">
+
+          <div className="contact-card">
+
+            <div>
+
+              <div className="section-label">
+                05 / CONTACT
+              </div>
+
+              <h2>
+                Let&apos;s build something
+                <br />
+                <span>useful with AI.</span>
+              </h2>
+
+              <p>
+                Open to entry-level opportunities, internships and
+                practical AI / Python / Data Science projects.
+              </p>
+
+            </div>
+
+            <div className="contact-actions">
+
+              <a
+                className="primary"
+                href="mailto:akshatsharma070519@gmail.com"
+              >
+                <Mail size={18} />
+                Email me
+              </a>
+
+              <a
+                className="outline"
+                href="https://www.linkedin.com/in/akshat-sharma-305a5b3b2"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+
+              <a
+                className="outline"
+                href="https://github.com/akshat05-codes"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+
+      {/* FOOTER */}
+      <footer>
+        <span>AKSHAT SHARMA</span>
+
+        <span>
+          AI • PYTHON • MACHINE LEARNING • DATA SCIENCE
+        </span>
+
+        <span>
+          © 2026
+        </span>
+      </footer>
+
+    </div>
+  );
+}
+
+createRoot(
+  document.getElementById("root")
+).render(
+  <App />
+);
